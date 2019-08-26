@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!-- load static files that coverage media part -->
+{% load staticfiles %}
+<html lang="en" xmlns:margin-bottom="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta charset="UTF-8">
+            <title>Soil Nutrient Analysis | Upload </title>
+
+    <!-- apply bootstrap here -->
+        <link rel="stylesheet" href="{% static 'css/upload.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- closing the bootstrap link -->
+
+        <!-- creating style Sheet -->
+        <style>
+            .box{
+
+
+
+                width: 800px;
+                height:500px;
+                padding: 20px;
+                margin: 50px auto;
+                box-shadow: 0px 0px 10px 2px whitesmoke;
+                background-color: #c3e5ba;
+                text-align: center;
+
+            }
+
+            .h1{
+
+                color: #2e6da4;
+                margin-bottom: 70px;
+            }
+
+
+
+
+        </style>
+
+        <!-- closing stylesheet -->
+
+    </head>
+
+
+<body>
+
+
+  <div class="box">
+      <div class="h1">
+
+<!-- heading section -->
+<h1 align="center"> Upload Data</h1>
+
+<!-- close heading section -->
+
+<div class="container" align="center">
+    <div class="button" align="center">
+        <div class="btn-group-vertical">
+            <div style="width: 100%;">
+
+<!-- apply buttons -->
+<button type="button" class="btn btn-info" style="width: 120%; margin-bottom: 10px">Data Acquisition</button><p><p>
+
+<button type="button" class="btn btn-info" style="width: 120%; margin-bottom: 10px">Pre-Processing</button><p><p>
+
+<button type="button" class="btn btn-info" style="width: 120%; margin-bottom: 10px">Regression</button><p><p>
+<button type="button" class="btn btn-info" style="width: 120%; margin-bottom: 10px">Prediction</button><p><p>
+                </div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- closing buttons -->
+
+
+<!-- upload file -->
+
+<div class="container">
+	<form id="fileUploadForm" method="post"
+      action="/upload/"
+      enctype="multipart/form-data">
+        {% csrf_token %}
+    <fieldset>
+
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="row-md-2">
+                <label class="control-label col-md-2 text-right"  for="filename"><span> Upload File</span></label>
+                <div class="col-md-4">
+
+                    <div class="input-group">
+                        <input type="hidden" id="filename" name="filename" value="">
+                        <input type="file" id="uploadedFile" name="document" class="form-control form-control-sm" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel, .msword, .pdf, .jpeg, .png, .docx, .asd, .csv" placeholder="required">
+                        <div class="input-group-btn">
+                            <input type="submit" value="Upload" class="rounded-0 btn btn-primary" placeholder="required">
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+    </fieldset>
+</form>
+<div style="width: 100%;">
+    {% if url %}
+    <p>Uploaded file: <a href="{{ url }}">{{ url }}</a> </p>
+  {% endif %}
+</div>
+  </div>
+  </div>
+</div>
+<!-- end upload file -->
+</body>
+
+
+</html>
